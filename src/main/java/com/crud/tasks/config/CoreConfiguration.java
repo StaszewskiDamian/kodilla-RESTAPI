@@ -36,8 +36,8 @@ public class CoreConfiguration implements WebMvcConfigurer {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 //pozwala na wybranie pakietów
-                .apis(RequestHandlerSelectors.any())
-                //.apis(RequestHandlerSelectors.basePackage("com.crud.tasks.controller"))
+                //.apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.crud.tasks.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
