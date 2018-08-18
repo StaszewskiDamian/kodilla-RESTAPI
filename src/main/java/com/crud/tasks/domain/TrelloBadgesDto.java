@@ -14,6 +14,7 @@ public class TrelloBadgesDto {
 
     @JsonProperty("votes")
     private String votes;
+
     @JsonProperty("attachmentsByType")
     private TrelloTypeAttachement trelloTypeAttachement;
 }

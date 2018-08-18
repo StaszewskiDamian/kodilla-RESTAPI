@@ -18,11 +18,11 @@ public class SimpleEmailService {
     private JavaMailSender javaMailSender;
 
     public void send(final Mail mail) {
-        LOGGER.info("Starting email preparation..." );
+        LOGGER.info("Starting email preparation...");
         try {
             SimpleMailMessage mailMessage = crateMailMessage(mail);
             javaMailSender.send(mailMessage);
-            LOGGER.info("Email has benn sent" );
+            LOGGER.info("Email has benn sent");
         } catch (MailException e) {
             LOGGER.error("Failed to process email sending: ", e.getMessage(), e);
         }
@@ -39,7 +39,5 @@ public class SimpleEmailService {
         }
 
         return mailMessage;
-
-
     }
 }

@@ -22,17 +22,17 @@ public class DbService {
         return repository.findById(id).orElse(null);
     }*/
 
-    public Task saveTask(final Task task){
+    public Task saveTask(final Task task) {
         return repository.save(task);
     }
 
-    public Optional<Task> getTask(final Long id){
+    public Optional<Task> getTask(final Long id) {
         return repository.findById(id);
     }
 
     @Transactional
-    public void deleteTask(Long id){
-          repository.deleteById(id);
+    public void deleteTask(Long id) {
+        repository.deleteById(id);
     }
 
 }

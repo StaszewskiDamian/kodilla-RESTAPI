@@ -1,6 +1,5 @@
 package com.crud.tasks.scheduler;
 
-
 import com.crud.tasks.config.AdminConfig;
 import com.crud.tasks.domain.Mail;
 import com.crud.tasks.repository.TaskRepository;
@@ -24,16 +23,14 @@ public class EmailScheduler {
     private AdminConfig adminConfig;
 
     @Scheduled(cron = "0 0 10 * * *")
-    public void sendInformationEmail(){
+    public void sendInformationEmail() {
 
         long size = taskRepository.count();
 
         simpleEmailService.send(new Mail(adminConfig.getAdminMail(), SUBJECT,
 
-                "Currently in database you got: " + size + " " + ( size != 1 ? "tasks" : "task" ),
+                "Currently in database you got: " + size + " " + (size != 1 ? "tasks" : "task"),
                 //new StringBuilder("Currently in database you got: ").append(size).append(size!=1 ? "task":"tasks").toString() ,
                 ""));
-
-
     }
 }

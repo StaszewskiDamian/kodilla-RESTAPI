@@ -1,6 +1,5 @@
 package com.crud.tasks.service;
 
-
 import com.crud.tasks.config.AdminConfig;
 import com.crud.tasks.domain.CreatedTrelloCard;
 import com.crud.tasks.domain.Mail;
@@ -35,10 +34,8 @@ public class TrelloService {
                 "New card"+card.getName()+" has been created on your Trello accunt",
                 ""
         )));
-
         return newCard;
     }
-
 
     public List<TrelloBoardDto> fetchTrelloBoards(){
         return trelloClient.getTrelloBoards();
