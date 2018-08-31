@@ -21,6 +21,7 @@ import java.util.Optional;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -94,7 +95,7 @@ public class TaskControllerTest {
                 .characterEncoding("UTF-8")
                 .content(jsonContent))
                 .andExpect(status().is(200));
-        verify(service).deleteTask(1L);
+        verify(service, times(1)).deleteTask(1L);
     }
 
     @Test
@@ -133,6 +134,6 @@ public class TaskControllerTest {
                 .characterEncoding("UTF-8")
                 .content(jsonContent))
                 .andExpect(status().is(200));
-        verify(service).saveTask(taskMapper.mapToTask(taskDto));
+        verify(service, times(1)).saveTask(any());
     }
 }
