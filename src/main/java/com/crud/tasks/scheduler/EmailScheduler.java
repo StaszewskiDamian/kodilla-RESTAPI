@@ -33,6 +33,4 @@ public class EmailScheduler {
                 //new StringBuilder("Currently in database you got: ").append(size).append(size!=1 ? "task":"tasks").toString() ,
                 ""));
     }
-
-
 }

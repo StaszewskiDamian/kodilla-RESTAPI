@@ -12,7 +12,6 @@ import org.thymeleaf.context.Context;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Service
 public class MailCreatorService {
 
@@ -43,14 +42,21 @@ public class MailCreatorService {
         context.setVariable("application_functionality", functionality);
         context.setVariable("company", adminConfig.getCompanyName() + " phone: " + adminConfig.getCompanyPhone());
         context.setVariable("goodbye", "Fareweel my friend.");
-        return templateEngine.process("mail/created-trello-card-mail", context);
+        return templateEngine.process("mail/scheduled-mail", context);
     }
 
     @Scheduled(cron = "0 0 11 * * *")
-    public void sendMoreInformationEmail() {
+    public String sendMoreInformationEmail() {
         long size = taskRepository.count();
-
-
-
+        String message = "Currently in database you got: " + size + " " + (size != 1 ? "tasks" : "task");
+        Context context = new Context();
+        context.setVariable("prev_message", message);
+        context.setVariable("message", message);
+        context.setVariable("button_url", "https://staszewskidamian.github.io/");
+        context.setVariable("admin_name", adminConfig.getAdminName());
+        context.setVariable("button", "Show website");
+        context.setVariable("goodbye", "Fareweel my friend.");
+        context.setVariable("company", adminConfig.getCompanyName() + " phone: " + adminConfig.getCompanyPhone());
+        return templateEngine.process("mail/scheduled-mail", context);
     }
 }

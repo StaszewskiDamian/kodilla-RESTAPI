@@ -24,7 +24,6 @@ public class TrelloService {
     @Autowired
     private AdminConfig adminConfig;
 
-
     public CreatedTrelloCardDto createTrelloCard(final TrelloCardDto trelloCardDto) {
         CreatedTrelloCardDto newCard = trelloClient.createNewCard(trelloCardDto);
 
