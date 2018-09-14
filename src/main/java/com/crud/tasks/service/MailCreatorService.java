@@ -1,6 +1,7 @@
 package com.crud.tasks.service;
 
 import com.crud.tasks.config.AdminConfig;
+import com.crud.tasks.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -22,6 +23,9 @@ public class MailCreatorService {
     @Qualifier("templateEngine")
     private TemplateEngine templateEngine;
 
+    @Autowired
+    private TaskRepository taskRepository;
+
     public String buildTrelloCardEmail(String message) {
 
         List<String> functionality = new ArrayList<>();
@@ -37,13 +41,15 @@ public class MailCreatorService {
         context.setVariable("show_button", false);
         context.setVariable("is_friend", true);
         context.setVariable("application_functionality", functionality);
-        context.setVariable("company",adminConfig.getCompanyName() + " phone: " + adminConfig.getCompanyPhone());
+        context.setVariable("company", adminConfig.getCompanyName() + " phone: " + adminConfig.getCompanyPhone());
         context.setVariable("goodbye", "Fareweel my friend.");
         return templateEngine.process("mail/created-trello-card-mail", context);
     }
 
     @Scheduled(cron = "0 0 11 * * *")
     public void sendMoreInformationEmail() {
+        long size = taskRepository.count();
+
 
 
     }
