@@ -46,7 +46,7 @@ public class MailCreatorService {
     }
 
 
-    public String buildMoreInformationEmail() {
+    public String sendMoreInformationEmail() {
         long size = taskRepository.count();
         String message = "Currently in database you got: " + size + " " + (size != 1 ? "tasks" : "task");
         Context context = new Context();
